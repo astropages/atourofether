@@ -1,4 +1,4 @@
-package main
+package eth
 
 import (
 	"crypto/ecdsa"
@@ -32,7 +32,7 @@ func NewWalletKeyPair() (*Wallet, error) {
 	return &wallet, nil
 }
 
-//Address 通过公钥获取钱包地址
-func (w *Wallet) Address() string {
+//AddressHex 钱包地址
+func (w *Wallet) AddressHex() string {
 	return crypto.PubkeyToAddress(*w.PublickKey).Hex()
 }

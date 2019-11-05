@@ -1,4 +1,4 @@
-package main
+package eth
 
 import (
 	"context"
@@ -12,18 +12,15 @@ import (
 )
 
 const (
-	//测试节点
-	TEST_ENDPOINT = "https://ropsten.infura.io/v3/e2a64621539843ebbae17402e672d210"
-	//测试合约
-	TEST_CONTRACT = "0x33075eDc32474D89BCd1aD23E180A1E96A45FeA2"
-	//测试钱包
-	TEST_ADDRESS1 = "0xE7bc6d2F28B68626106391332fEdFD31A3725bBb"
-	TEST_ADDRESS2 = "0x0698c06FC0c46f57CA561E561b03E2b42522455f"
+	//节点
+	ENDPOINT = "https://ropsten.infura.io/v3/e2a64621539843ebbae17402e672d210"
+	//代币
+	TOKEN_ADDRESS = "0x07aa03e058c3c1dbf6d19e2751cc8cd60148719f"
 )
 
 //ConnectToRPC 建立RPC连接
 func ConnectToRPC() (*ethclient.Client, error) {
-	client, err := rpc.Dial(TEST_ENDPOINT)
+	client, err := rpc.Dial(ENDPOINT)
 	if err != nil {
 		return nil, err
 	}
@@ -31,24 +28,24 @@ func ConnectToRPC() (*ethclient.Client, error) {
 	return conn, nil
 }
 
-//GetBalance 获取地址余额
-func GetBalance(address string) (float64, error) {
+//GetBalance 获取余额
+func GetBalance(addressHex string) (float64, error) {
 	client, err := ConnectToRPC()
 	if err != nil {
 		return -1, err
 	}
-	balance, err := client.BalanceAt(context.TODO(), common.HexToAddress(address), nil)
+	balance, err := client.BalanceAt(context.TODO(), common.HexToAddress(addressHex), nil)
 	return float64(balance.Int64()) * math.Pow(10, -18), nil
 
 }
 
 //GetBlock 获取区块
-func GetBlock(num int64) (*types.Block, error) {
+func GetBlock(blockNumberInt int64) (*types.Block, error) {
 	client, err := ConnectToRPC()
 	if err != nil {
 		return nil, err
 	}
-	blockNumber := big.NewInt(num)
+	blockNumber := big.NewInt(blockNumberInt)
 	block, err := client.BlockByNumber(context.Background(), blockNumber)
 	if err != nil {
 		return nil, err

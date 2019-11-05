@@ -1,4 +1,4 @@
-package main
+package eth
 
 import (
 	"context"
@@ -9,18 +9,18 @@ import (
 )
 
 //AddressIsContract 校验地址
-func AddressIsContract(str string) (bool, error) {
+func AddressIsContract(addressHex string) (bool, error) {
 	client, err := ConnectToRPC()
 	if err != nil {
 		return false, err
 	}
 	//校验地址格式
 	re := regexp.MustCompile("^0x[0-9a-fA-F]{40}$")
-	if !re.MatchString(str) {
+	if !re.MatchString(addressHex) {
 		return false, errors.New("Bad Format")
 	}
 	//校验地址类型(地址上没有字节码时表示他是一个合约)
-	address := common.HexToAddress(str)
+	address := common.HexToAddress(addressHex)
 	bytecode, err := client.CodeAt(context.Background(), address, nil)
 	if err != nil {
 		return false, err
