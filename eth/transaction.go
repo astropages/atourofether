@@ -107,7 +107,7 @@ func TokenTransaction(privateKeyHex string, toAddressHex string, token float64) 
 	// if err != nil {
 	// 	return nil, err
 	// }
-	gasPrice := big.NewInt(int64(10 * math.Pow(10, 9))) //10 Gwei
+	gasPrice := big.NewInt(int64(100 * math.Pow(10, 9))) //10 Gwei
 
 	//推导发送者地址
 	fromAddress := crypto.PubkeyToAddress(privateKey.PublicKey)
@@ -129,7 +129,7 @@ func TokenTransaction(privateKeyHex string, toAddressHex string, token float64) 
 	// if err != nil {
 	// 	return nil, err
 	// }
-	gasLimit := uint64(77581)
+	gasLimit := uint64(344740)
 
 	//创建交易
 	tx := types.NewTransaction(nonce, tokenAddress, value, gasLimit, gasPrice, data)

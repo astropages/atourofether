@@ -28,8 +28,8 @@ func TestEtherTransaction(t *testing.T) {
 func TestTokenTransaction(t *testing.T) {
 	privateKeyHex := ACCOUNT1_PRIVATEKEY
 	to := ACCOUNT2_ADDRESS
-	var tc float64 = 1
-	tx, err := TokenTransaction(privateKeyHex, to, tc)
+	var token float64 = 1.5
+	tx, err := TokenTransaction(privateKeyHex, to, token)
 	if err != nil {
 		t.Fatal(err)
 	}
