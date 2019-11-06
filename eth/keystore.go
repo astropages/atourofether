@@ -10,7 +10,7 @@ import (
 
 const (
 	//Keystore文件目录
-	KS_DIR = "./wallets/"
+	KS_DIR = "./eth/wallets/"
 )
 
 //NewKeystore keystore创建账户
