@@ -78,7 +78,7 @@ func TokenTransaction(privateKeyHex string, toAddressHex string, token float64) 
 	//接收者地址
 	toAddress := common.HexToAddress(toAddressHex)
 	//合约地址
-	tokenAddress := common.HexToAddress(TOKEN_ADDRESS)
+	tokenAddress := common.HexToAddress(TokenAddress)
 	//检索合约方法
 	transferFnSignature := []byte("transfer(address,uint256)")
 	//获取方法ID

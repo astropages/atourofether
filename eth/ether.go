@@ -12,15 +12,15 @@ import (
 )
 
 const (
-	//节点
-	ENDPOINT = "https://ropsten.infura.io/v3/e2a64621539843ebbae17402e672d210"
-	//代币
-	TOKEN_ADDRESS = "0x07aa03e058c3c1dbf6d19e2751cc8cd60148719f"
+	//EndPoint 节点
+	EndPoint = "https://ropsten.infura.io/v3/e2a64621539843ebbae17402e672d210"
+	//TokenAddress 代币
+	TokenAddress = "0x07aa03e058c3c1dbf6d19e2751cc8cd60148719f"
 )
 
 //ConnectToRPC 建立RPC连接
 func ConnectToRPC() (*ethclient.Client, error) {
-	client, err := rpc.Dial(ENDPOINT)
+	client, err := rpc.Dial(EndPoint)
 	if err != nil {
 		return nil, err
 	}

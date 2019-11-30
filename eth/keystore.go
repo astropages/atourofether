@@ -9,13 +9,13 @@ import (
 )
 
 const (
-	//Keystore文件目录
-	KS_DIR = "./eth/wallets/"
+	//KeystoreDir ..
+	KeystoreDir = "./keystores/"
 )
 
 //NewKeystore keystore创建账户
 func NewKeystore(password string) (*accounts.Account, error) {
-	ks := keystore.NewKeyStore(KS_DIR, keystore.StandardScryptN, keystore.StandardScryptP)
+	ks := keystore.NewKeyStore(KeystoreDir, keystore.StandardScryptN, keystore.StandardScryptP)
 	account, err := ks.NewAccount(password)
 	if err != nil {
 		return nil, err
@@ -25,7 +25,7 @@ func NewKeystore(password string) (*accounts.Account, error) {
 
 //ImportKeystore keystore导入账户
 func ImportKeystore(file, password string) (*accounts.Account, error) {
-	ks := keystore.NewKeyStore(KS_DIR, keystore.StandardScryptN, keystore.StandardScryptP)
+	ks := keystore.NewKeyStore(KeystoreDir, keystore.StandardScryptN, keystore.StandardScryptP)
 	jsonBytes, err := ioutil.ReadFile(file)
 	if err != nil {
 		return nil, err
