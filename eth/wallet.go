@@ -13,7 +13,7 @@ type Wallet struct {
 	PublickKey *ecdsa.PublicKey
 }
 
-//NewWallet 创建钱包密钥对
+//NewWalletKeyPair 创建钱包密钥对
 func NewWalletKeyPair() (*Wallet, error) {
 	//随机私钥
 	privateKey, err := crypto.GenerateKey()
